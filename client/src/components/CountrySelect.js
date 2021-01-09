@@ -7,7 +7,8 @@ const CountrySelect = ( {countries, selectCountryById} ) => {
   })
 
   const handleChange = (event) => {
-    const countryId = event.target.value
+    const countryId = event.target.value;
+    console.log(countryId)
     selectCountryById(countryId)
   }
 

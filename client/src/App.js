@@ -2,6 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { getCountries } from './services/CountriesService';
 import CountrySelect from './components/CountrySelect';
+import QuizContainer from './containers/QuizContainer';
  
 function App() {
 
@@ -14,7 +15,8 @@ function App() {
   }, [])
 
   const setSelectedCountryById = (countryId) => {
-    const getSelectedCountryById = countries.find(country => country.id = countryId)
+    console.log("app country id", countryId)
+    const getSelectedCountryById = countries.find(country => country._id === countryId)
     setSelectedCountry(getSelectedCountryById)
   }
 
@@ -22,6 +24,7 @@ function App() {
     <>
     <h1>M-Apps - getting ready to fetch</h1>
     <CountrySelect countries={countries} selectCountryById={setSelectedCountryById} />
+    <QuizContainer selectedCountry={selectedCountry}/>
     </>
   );
 }
