@@ -3,11 +3,13 @@ import { useState, useEffect } from 'react';
 import { getCountries } from './services/CountriesService';
 import CountrySelect from './components/CountrySelect';
 import QuizContainer from './containers/QuizContainer';
+import DifficultySelect from './components/DifficultySelect';
  
 function App() {
 
   const [countries, setCountries] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState({})
+  const [selectedCountry, setSelectedCountry] = useState({});
+  const [difficulty, setDifficulty] = useState("");
 
   useEffect(() => {
     console.log('use effect on render...')
@@ -15,16 +17,20 @@ function App() {
   }, [])
 
   const setSelectedCountryById = (countryId) => {
-    console.log("app country id", countryId)
     const getSelectedCountryById = countries.find(country => country._id === countryId)
     setSelectedCountry(getSelectedCountryById)
+  }
+
+  const setSelectedDifficulty = (difficulty) => {
+    setDifficulty(difficulty)
   }
 
   return (
     <>
     <h1>M-Apps - getting ready to fetch</h1>
     <CountrySelect countries={countries} selectCountryById={setSelectedCountryById} />
-    <QuizContainer selectedCountry={selectedCountry}/>
+    <DifficultySelect selectDifficulty = {setSelectedDifficulty}/>
+    <QuizContainer selectedCountry={selectedCountry} selectedDifficulty={difficulty}/>
     </>
   );
 }
