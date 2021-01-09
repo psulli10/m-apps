@@ -7,13 +7,13 @@ const CountrySelect = ( {countries, selectCountryById} ) => {
   })
 
   const handleChange = (event) => {
-    const countryId = event.target.value
+    const countryId = event.target.value;
     selectCountryById(countryId)
   }
 
   return(
     <>
-    <h3>I am a select component</h3>
+    <h3>I am a country select component</h3>
     <select onChange={handleChange} defaultValue="">
     <option hidden>Choose a Country</option>
       {displayCountries}  
