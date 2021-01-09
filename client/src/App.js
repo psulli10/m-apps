@@ -1,12 +1,14 @@
 import './App.css';
-import {useState, useEffect} from 'react';
-
+import { useState, useEffect } from 'react';
+import { getCountries } from './services/CountriesService';
+ 
 function App() {
 
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
     console.log('use effect on render...')
+    getCountries().then(countries => setCountries(countries))
   }, [])
 
   return (
