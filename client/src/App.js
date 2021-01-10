@@ -1,9 +1,15 @@
 import './App.css';
+
 import { useState, useEffect } from 'react';
 import { getCountries } from './services/CountriesService';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CountrySelect from './components/CountrySelect';
 import QuizContainer from './containers/QuizContainer';
 import DifficultySelect from './components/DifficultySelect';
+import ErrorPage from './components/ErrorPage';
+import NavBar from './components/NavBar';
+import Home from './components/Home';
+
  
 function App() {
 
@@ -26,12 +32,32 @@ function App() {
   }
 
   return (
-    <>
-    <h1>M-Apps - getting ready to fetch</h1>
-    <CountrySelect countries={countries} selectCountryById={setSelectedCountryById} />
-    <DifficultySelect selectDifficulty = {setSelectedDifficulty}/>
-    <QuizContainer selectedQuestions={selectedCountry[difficulty]}/>
-    </>
+
+    <Router>
+      <>
+      <NavBar/>
+      <Switch>
+        <Route exact path="/" component={Home}/>
+        <Route path="/country-select"
+          render={() => <CountrySelect countries={countries} selectCountryById={setSelectedCountryById} />}
+        />
+        <Route path="/difficulty-select"
+          render={() => <DifficultySelect selectDifficulty = {setSelectedDifficulty}/>}
+        />
+        <Route path="/quiz"
+          render={() => <QuizContainer selectedQuestions={selectedCountry[difficulty]}/>}
+        />
+        <Route component={ErrorPage}/>
+        {/* <Route component={ErrorPage}/> */}
+      </Switch>
+      </>
+    </Router>
+    // <>
+    // <h1>M-Apps - getting ready to fetch</h1>
+    // <CountrySelect countries={countries} selectCountryById={setSelectedCountryById} />
+    // <DifficultySelect selectDifficulty = {setSelectedDifficulty}/>
+    // <QuizContainer selectedQuestions={selectedCountry[difficulty]}/>
+    // </>
   );
 }
 
