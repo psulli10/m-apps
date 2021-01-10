@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom';
 
-const CountrySelect = ( {countries, selectCountryById} ) => {
+const CountrySelect = ({ countries, selectCountryById }) => {
 
 
   const displayCountries = countries.map((country) => {
@@ -11,14 +12,15 @@ const CountrySelect = ( {countries, selectCountryById} ) => {
     selectCountryById(countryId)
   }
 
-  return(
+  return (
     <>
-    <h3>I am a country select component</h3>
-    <select onChange={handleChange} defaultValue="">
-    <option hidden>Choose a Country</option>
-      {displayCountries}  
-    </select>
-    
+      <h3>I am a country select component</h3>
+      <select onChange={handleChange} defaultValue="" required>
+        <option disabled value="">Choose a Country</option>
+        {displayCountries}
+      </select>
+      <br></br>
+        <Link to="/difficulty-select">Next</Link>
     </>
   )
 
