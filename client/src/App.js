@@ -30,7 +30,7 @@ function App() {
     <h1>M-Apps - getting ready to fetch</h1>
     <CountrySelect countries={countries} selectCountryById={setSelectedCountryById} />
     <DifficultySelect selectDifficulty = {setSelectedDifficulty}/>
-    <QuizContainer selectedCountry={selectedCountry} selectedDifficulty={difficulty}/>
+    <QuizContainer selectedQuestions={selectedCountry[difficulty]}/>
     </>
   );
 }
