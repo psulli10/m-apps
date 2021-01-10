@@ -3,7 +3,8 @@ import QuestionComponent from '../components/QuestionComponent'
 
 const QuizContainer = ({selectedQuestions}) => {
 
-  const [questionCount, setQuestionCount] = useState(1);
+  const [questionCount, setQuestionCount] = useState(0);
+  const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
 
   if(!selectedQuestions){
     return(
@@ -13,11 +14,22 @@ const QuizContainer = ({selectedQuestions}) => {
     )
   }
 
+  const increaseQuestionCount = () => {
+    setQuestionCount(questionCount => questionCount + 1)
+  }
 
+  const checkAnswerCorrect = (answer) => {
+    if(answer === selectedQuestions[questionCount].correct_answer){
+      setCorrectAnswerCount(correctAnswerCount => correctAnswerCount + 1)
+      console.log('Answer correct')
+    } else {
+      console.log('Incorrect answer')
+    }
+  }
 
   return(
     <>
-    <QuestionComponent quizQuestions = {selectedQuestions} currentQuestion={questionCount}/>
+    <QuestionComponent quizQuestions = {selectedQuestions} currentQuestion={questionCount} increaseQuestionCount={increaseQuestionCount} checkAnswerCorrect={checkAnswerCorrect}/>
     </>
   )
 }

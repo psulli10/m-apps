@@ -1,11 +1,16 @@
-import QuizContainer from "../containers/QuizContainer";
+const QuestionComponent = ({ quizQuestions, currentQuestion, increaseQuestionCount, checkAnswerCorrect}) => {
 
-const QuestionComponent = ({ quizQuestions, currentQuestion }) => {
+const handleClick =(event) => {
+  // console.log(event.target.value)
+  const answer = event.target.value;
+  checkAnswerCorrect(answer)
+  increaseQuestionCount()
+}
 
 const getAnswerNodes = (questionIndex) => {
-    const answers = quizQuestions[questionIndex].answers.map((answer) => {
-      console.log(answer)
-    return <button>{answer}</button>
+    const answers = quizQuestions[questionIndex].answers.map((answer, index) => {
+      // console.log(answer)
+    return <button onClick={handleClick} value={answer} key={index}>{answer}</button>
   })
   return answers
 }
