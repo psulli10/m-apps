@@ -9,6 +9,7 @@ import DifficultySelect from './components/DifficultySelect';
 import ErrorPage from './components/ErrorPage';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
+import MapComponent from './components/MapComponent';
 
  
 function App() {
@@ -45,8 +46,9 @@ function App() {
           render={() => <DifficultySelect selectDifficulty = {setSelectedDifficulty}/>}
         />
         <Route path="/quiz"
-          render={() => <QuizContainer selectedQuestions={selectedCountry[difficulty]}/>}
+          render={() => <QuizContainer selectedQuestions={selectedCountry[difficulty]} selectedCountry={selectedCountry}/>}
         />
+        {/* <Route path="/map" component={MapComponent}/> */}
         <Route component={ErrorPage}/>
         {/* <Route component={ErrorPage}/> */}
       </Switch>

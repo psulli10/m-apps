@@ -1,8 +1,9 @@
 import { useState } from "react";
 import QuestionComponent from '../components/QuestionComponent';
 import ResultComponent from '../components/ResultComponent';
+import MapComponent from '../components/MapComponent';
 
-const QuizContainer = ({ selectedQuestions }) => {
+const QuizContainer = ({ selectedQuestions, selectedCountry }) => {
 
   const [questionCount, setQuestionCount] = useState(0);
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
@@ -31,12 +32,14 @@ const QuizContainer = ({ selectedQuestions }) => {
   if (questionCount !== 4) {
     return (
       <>
+        <MapComponent country={selectedCountry} currentZoomLevel={questionCount}/>
         <QuestionComponent quizQuestions={selectedQuestions} currentQuestion={questionCount} increaseQuestionCount={increaseQuestionCount} checkAnswerCorrect={checkAnswerCorrect} />
       </>
     )
   } else {
     return (
       <>
+        <MapComponent country={selectedCountry} currentZoomLevel={questionCount}/>
         <ResultComponent score={correctAnswerCount}/>
       </>
     )
