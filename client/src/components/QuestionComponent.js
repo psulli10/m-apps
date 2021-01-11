@@ -1,4 +1,4 @@
-const QuestionComponent = ({ quizQuestions, currentQuestion, increaseQuestionCount, checkAnswerCorrect}) => {
+const QuestionComponent = ({ quizQuestions, currentQuestion, increaseQuestionCount, checkAnswerCorrect }) => {
 
 const handleClick =(event) => {
   // console.log(event.target.value)
@@ -14,8 +14,6 @@ const getAnswerNodes = (questionIndex) => {
   })
   return answers
 }
-
-console.log("answerNodes", getAnswerNodes(currentQuestion))
 
   return(
     <>
