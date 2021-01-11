@@ -9,7 +9,6 @@ import DifficultySelect from './components/DifficultySelect';
 import ErrorPage from './components/ErrorPage';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
-import MapComponent from './components/MapComponent';
 
  
 function App() {
