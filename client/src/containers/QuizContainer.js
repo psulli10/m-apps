@@ -45,7 +45,7 @@ const QuizContainer = ({ selectedQuestions, selectedCountry }) => {
     }
   }
 
-  const SetViewOnClick = ({zoom}) => {
+  const SetZoomOnClick = ({zoom}) => {
     const map = useMap();
     console.log("set zoom")
     map.setZoom(zoom);
@@ -65,7 +65,7 @@ const QuizContainer = ({ selectedQuestions, selectedCountry }) => {
             A pretty CSS3 popup. <br /> Easily customizable.
         </Popup>
         </Marker>
-        <SetViewOnClick zoom={selectedCountry.zooms[questionCount]} />
+        <SetZoomOnClick zoom={selectedCountry.zooms[questionCount]} />
       </MapContainer>
       {resultToggle()}
 
