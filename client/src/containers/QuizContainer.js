@@ -4,7 +4,7 @@ import ResultComponent from '../components/ResultComponent';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 
-const QuizContainer = ({ selectedQuestions, selectedCountry }) => {
+const QuizContainer = ({ selectedQuestions, selectedCountry, userName }) => {
 
   const [questionCount, setQuestionCount] = useState(0);
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0);
@@ -39,9 +39,9 @@ const QuizContainer = ({ selectedQuestions, selectedCountry }) => {
 
   const resultToggle = () => {
     if (questionCount !== 4) {
-      return <QuestionComponent quizQuestions={selectedQuestions} currentQuestion={questionCount} increaseQuestionCount={increaseQuestionCount} checkAnswerCorrect={checkAnswerCorrect} />
+      return <QuestionComponent quizQuestions={selectedQuestions} currentQuestion={questionCount} increaseQuestionCount={increaseQuestionCount} checkAnswerCorrect={checkAnswerCorrect} userName={userName}/>
     } else {
-      return <ResultComponent score={correctAnswerCount} />
+      return <ResultComponent score={correctAnswerCount} userName={userName}/>
     }
   }
 

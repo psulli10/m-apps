@@ -9,6 +9,7 @@ import DifficultySelect from './components/DifficultySelect';
 import ErrorPage from './components/ErrorPage';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
+import UserName from './components/UserName';
 
  
 function App() {
@@ -16,6 +17,7 @@ function App() {
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState({});
   const [difficulty, setDifficulty] = useState("");
+  const [name, setName] = useState("");
 
   useEffect(() => {
     console.log('use effect on render...')
@@ -29,6 +31,11 @@ function App() {
 
   const setSelectedDifficulty = (difficulty) => {
     setDifficulty(difficulty)
+  }
+
+  const setNameOnChange = (name) => {
+    console.log("setting name at app.js...")
+    setName(name);
   }
 
   return (
@@ -45,9 +52,10 @@ function App() {
           render={() => <DifficultySelect selectDifficulty = {setSelectedDifficulty}/>}
         />
         <Route path="/quiz"
-          render={() => <QuizContainer selectedQuestions={selectedCountry[difficulty]} selectedCountry={selectedCountry}/>}
+          render={() => <QuizContainer selectedQuestions={selectedCountry[difficulty]} selectedCountry={selectedCountry} userName={name}/>}
         />
         {/* <Route path="/map" component={MapComponent}/> */}
+        <UserName path="/name" component={UserName} setName={setNameOnChange}/>
         <Route component={ErrorPage}/>
         {/* <Route component={ErrorPage}/> */}
       </Switch>
