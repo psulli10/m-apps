@@ -1,4 +1,4 @@
-const QuestionComponent = ({ quizQuestions, currentQuestion, increaseQuestionCount, checkAnswerCorrect }) => {
+const QuestionComponent = ({ quizQuestions, currentQuestion, increaseQuestionCount, checkAnswerCorrect, userName }) => {
 
 const handleClick =(event) => {
   // console.log(event.target.value)
